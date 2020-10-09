@@ -4,21 +4,60 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     margin-bottom: 3%;
+    font-size: 12px;
 }
 
 .client-image-mask {
-    height: 20vw;
-    width: 20vw;
+    height: 23vw;
+    width: 35vw;
     border-radius: 100%;
     background-color: violet;
     overflow: hidden;
     margin: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-image-mask img {
+    width: 200%;
+    height: auto;
 }
 
 .client-details {
     margin: 3%;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    font-weight: bold;
+}
+
+.client-name {
+    color: white;
+}
+
+.process {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    color: #852194;
+}
+
+.status-box {
+    width: 100px;
+    height: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #852194;
+    text-align: center;
+    margin-left: 10%;
+    font-size: 10px;
 }

@@ -31,7 +31,7 @@
 
 .nav-bar {
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   height: 50px;
   border-top-style: solid;

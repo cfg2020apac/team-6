@@ -64,6 +64,12 @@ class Client(db.Model):
 def get_all():
   return jsonify({"Clients": [client.json() for client in Client.query.all()]})
 
+@app.route("/get_client_name/<string:clientID>")
+def get_client_name(clientID):
+    clientID = int(clientID)
+    client_row = Client.query.filter_by(clientID = clientID).first().json()
+    return jsonify({"name" : client_row["name"]})
+
 @app.route("/get_assigned_client/<int:caseManagerID>")
 def get_assigned_account(caseManagerID):
 
@@ -85,4 +91,4 @@ def add_client():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0' , port=4000, debug=True)
+    app.run(host='0.0.0.0' , port=5002, debug=True)

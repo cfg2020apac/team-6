@@ -17,8 +17,6 @@ import Container from '@material-ui/core/Container';
 import logo from '../img/nhcslogo.webp';
 
 
-import Header from "../header";
-
 const mapSizesToProps = ({ width }) => ({
   isMobile: width < 680
 });
@@ -62,7 +60,6 @@ function SignIn(props) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Header dark style={{ background: "transparent" }} />
         <img src={logo} width="45%"/>
         <Typography component="h1" variant="h5">
           Sign in

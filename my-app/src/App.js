@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import SignIn from './components/home/SignIn';
+import SignIn from './components/mainpage/SignIn';
+import Home from './components/home/Home';
+import Clients from './components/clients/Clients';
+import Processes from './components/processes/Processes';
+import Settings from './components/settings/Settings';
+
 import './App.css';
 
 function App() {
@@ -17,6 +22,10 @@ function App() {
     <BrowserRouter>
         <Switch>
           <Route component={SignIn} exact path="/" />
+          <Route path="/home" exact component={Home}/>
+          <Route path="/clients" exact component={Clients}/>
+          <Route path="/processes" exact component={Processes}/>
+          <Route path="/settings" exact component={Settings}/>
         </Switch>
     </BrowserRouter>
 

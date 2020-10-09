@@ -18,16 +18,28 @@ class Client(db.Model):
     name = db.Column(db.String(64), nullable=False)
     contact_number = db.Column(db.String(64), nullable=False)
     client_email = db.Column(db.String(64), nullable=False)
+    marital_status = db.Column(db.String(64), nullable=False)
+    employment_status = db.Column(db.String(64), nullable=False)
+    income = db.Column(db.Integer, nullable=False)
+    disability = db.Column(db.String(64), nullable=False)
+    race = db.Column(db.String(64), nullable=False)
+    religion = db.Column(db.String(64), nullable=False)
 
-    def init(self, clientID, customerID, name, contact_number, client_email):
+    def init(self, clientID, customerID, name, contact_number, client_email, marital_status, employment_status, income, disability, race, religion):
         self.clientID = clientID
         self.customerID = customerID
         self.name = name
         self.contact_number = contact_number
         self.client_email = client_email
+        self.marital_status = marital_status
+        self.employment_status = employment_status
+        self.income = income
+        self.disability = disability
+        self.race = race
+        self.religion = religion
 
     def json(self):
-        return {"clientID": self.clientID, "customerID" : self.customerID, "name": self.name, "contact_number": self.contact_number, "client_email": self.client_email}
+        return {"clientID": self.clientID, "customerID" : self.customerID, "name": self.name, "contact_number": self.contact_number, "client_email": self.client_email, "marital_status" : self.marital_status,"employment_status" : self.employment_status,"income" : self.income,"disability" : self.disability,"race" : self.race,"religion" : self.religion}
 
 @app.route("/get_all")
 def get_all():
@@ -43,7 +55,7 @@ def add_client():
     
     data = request.get_json()
     
-    client = Client(customerID = data["customerID"], name = data["name"], contact_number= data["contact_number"], client_email= data["client_email"])
+    client = Client(customerID = data["customerID"], name = data["name"], contact_number= data["contact_number"], client_email= data["client_email"], marital_status = data["marital_status"],employment_status = data["employment_status"],income = data["income"],disability = data["disability"],race = data["race"],religion = data["religion"])
 
     try:
         db.session.add(client)

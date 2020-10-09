@@ -16,6 +16,10 @@ const { TextArea } = Input;
 function ClientRegistration(props) {
     const [form] = Form.useForm();
     
+    const submitForm = (values) => {
+        console.log(values);
+    }
+
     return (
         <div>
             <Layout style={styles.layout}>
@@ -85,7 +89,7 @@ function ClientRegistration(props) {
 
                     <Divider></Divider>
 
-                    <Form {...layout} form={form} name="control-hooks" onFinish={submitForm()}>
+                    <Form {...layout} form={form} name="control-hooks" onFinish={submitForm}>
                         <Text
                             style={{
                                 fontSize: "20px"
@@ -178,11 +182,55 @@ function ClientRegistration(props) {
                                 },
                             ]}
                         >
-                            <Space direction="vertical">
-                                <DatePicker/>
-                            </Space>,
+                            <DatePicker/>
                         </Form.Item>
                         
+                        <Divider></Divider>
+
+                        <Form.Item
+                            name="maritalStatus"
+                            label="Marital Status"
+                            rules={[
+                                {
+                                    required: true
+                                },
+                            ]}
+                        >
+                            <Select>
+                                <Option value="Single">Single</Option>
+                                <Option value="Married">Married</Option>
+                                <Option value="Seperated">Separated</Option>
+                                <Option value="Divorced">Divorced</Option>
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            name="employmentStatus"
+                            label="Employment Status"
+                            rules={[
+                                {
+                                    required: true
+                                },
+                            ]}
+                        >
+                            <Select>
+                                <Option value="Employed">Employed</Option>
+                                <Option value="Unemployed">Unemployed</Option>
+                            </Select>
+                        </Form.Item>
+
+                        <Form.Item
+                            name="income"
+                            label="Income"
+                            rules={[
+                                {
+                                    required: true
+                                },
+                            ]}
+                        >
+                            <Input/>
+                        </Form.Item>
+
                         <Divider></Divider>
 
                         <Form.Item
@@ -221,6 +269,8 @@ function ClientRegistration(props) {
                             <Input/>
                         </Form.Item>
 
+                        <Divider></Divider>
+
                         <Form.Item
                             name="allergies"
                             label="Allergies"
@@ -230,7 +280,7 @@ function ClientRegistration(props) {
                                 },
                             ]}
                         >
-                            <Input/>
+                            <TextArea/>
                         </Form.Item>
 
                         <Form.Item
@@ -242,7 +292,7 @@ function ClientRegistration(props) {
                                 },
                             ]}
                         >
-                            <Input/>
+                            <TextArea/>
                         </Form.Item>
 
                         <Form.Item
@@ -269,8 +319,6 @@ function ClientRegistration(props) {
                                 <Option value="AB+">AB+</Option>
                             </Select>
                         </Form.Item>
-
-                        
 
                         <Form.Item
                             name="previousConvictions"
@@ -333,6 +381,12 @@ function ClientRegistration(props) {
                             <Input/>
                         </Form.Item>
 
+
+                        <Form.Item {...tailLayout}>
+                            <Button type="primary" htmlType="submit">
+                                Submit
+                            </Button>
+                        </Form.Item>
                     </Form>
                 </BCard>
 
@@ -345,17 +399,13 @@ function ClientRegistration(props) {
 
 }
 
-function submitForm() {
-
-}
-
 const layout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 4 },
+    labelCol: { span: 8 },
+    wrapperCol: { span: 8 },
 };
 
 const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
+    wrapperCol: { span: 16 },
 };
 
 const styles = {

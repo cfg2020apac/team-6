@@ -1,6 +1,7 @@
 __pycache__/
 venvc/
 
+
 # dependencies
 /node_modules
 /.pnp

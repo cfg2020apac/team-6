@@ -35,7 +35,7 @@ function ClientRegistration(props) {
                     </Text>
                     </Col>
 
-                    <Link span={5} to="/client-registration">
+                    <Col span={5} to="/client-registration">
                     <div style={{
                         "display": "flex",
                         "flex-direction": "column"
@@ -47,7 +47,7 @@ function ClientRegistration(props) {
                         "font-size": "11px"
                         }}>Add Client</span>
                     </div>
-                    </Link>
+                    </Col>
 
                     <Col span={5}>
                     <div style={{

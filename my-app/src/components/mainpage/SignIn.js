@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from "react-router-dom";
+import { Link as RouterLink, withRouter } from "react-router-dom";
 import withSizes from "react-sizes";
 
 import Button from '@material-ui/core/Button';
@@ -91,6 +91,8 @@ function SignIn(props) {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+          
+          <RouterLink to="/home">
           <Button
             type="submit"
             fullWidth
@@ -100,6 +102,8 @@ function SignIn(props) {
           >
             Sign In
           </Button>
+          </RouterLink>
+
           <Button
             type="submit"
             fullWidth

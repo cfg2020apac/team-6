@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
+import SignIn from './components/SignIn';
 import './App.css';
 
 function App() {
@@ -13,11 +14,12 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>The current time is (from flask): {currentTime}.</p>
-      </header>
-    </div>
+    // <div className="App">
+    //   <header className="App-header">
+    //     <p>The current time is (from flask): {currentTime}.</p>
+    //   </header>
+    // </div>
+    <SignIn/>
   );
 }
 

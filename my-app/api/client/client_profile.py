@@ -14,7 +14,7 @@ class Client(db.Model):
     tablename = 'client'
 
     clientID = db.Column(db.Integer, primary_key=True)
-    customerID = db.Column(db.Integer, nullable = False)
+    caseManagerID = db.Column(db.Integer, nullable = False)
     name = db.Column(db.String(64), nullable=False)
     contact_number = db.Column(db.String(64), nullable=False)
     client_email = db.Column(db.String(64), nullable=False)
@@ -25,9 +25,9 @@ class Client(db.Model):
     race = db.Column(db.String(64), nullable=False)
     religion = db.Column(db.String(64), nullable=False)
 
-    def init(self, clientID, customerID, name, contact_number, client_email, marital_status, employment_status, income, disability, race, religion):
+    def init(self, clientID, caseManagerID, name, contact_number, client_email, marital_status, employment_status, income, disability, race, religion):
         self.clientID = clientID
-        self.customerID = customerID
+        self.caseManagerID = caseManagerID
         self.name = name
         self.contact_number = contact_number
         self.client_email = client_email
@@ -39,23 +39,23 @@ class Client(db.Model):
         self.religion = religion
 
     def json(self):
-        return {"clientID": self.clientID, "customerID" : self.customerID, "name": self.name, "contact_number": self.contact_number, "client_email": self.client_email, "marital_status" : self.marital_status,"employment_status" : self.employment_status,"income" : self.income,"disability" : self.disability,"race" : self.race,"religion" : self.religion}
+        return {"clientID": self.clientID, "caseManagerID" : self.caseManagerID, "name": self.name, "contact_number": self.contact_number, "client_email": self.client_email, "marital_status" : self.marital_status,"employment_status" : self.employment_status,"income" : self.income,"disability" : self.disability,"race" : self.race,"religion" : self.religion}
 
 @app.route("/get_all")
 def get_all():
   return jsonify({"Clients": [client.json() for client in Client.query.all()]})
 
-@app.route("/get_assigned_client/<int:customerID>")
-def get_assigned_account(customerID):
+@app.route("/get_assigned_client/<int:caseManagerID>")
+def get_assigned_account(caseManagerID):
 
-    return jsonify({"clients": [client.json() for client in Client.query.filter_by(customerID = customerID)]})
+    return jsonify({"clients": [client.json() for client in Client.query.filter_by(caseManagerID = caseManagerID)]})
 
 @app.route("/add_client", methods=["POST"])
 def add_client():
     
     data = request.get_json()
     
-    client = Client(customerID = data["customerID"], name = data["name"], contact_number= data["contact_number"], client_email= data["client_email"], marital_status = data["marital_status"],employment_status = data["employment_status"],income = data["income"],disability = data["disability"],race = data["race"],religion = data["religion"])
+    client = Client(caseManagerID = data["caseManagerID"], name = data["name"], contact_number= data["contact_number"], client_email= data["client_email"], marital_status = data["marital_status"],employment_status = data["employment_status"],income = data["income"],disability = data["disability"],race = data["race"],religion = data["religion"])
 
     try:
         db.session.add(client)

@@ -37,7 +37,7 @@ function callback(key) {
   console.log(key);
 }
 
-function Clients() {
+function ClientPage(props) {
   const [state, setState] = useState({
     comments: [],
     submitting: false,
@@ -142,6 +142,7 @@ function Clients() {
     },
   ];
 
+  const { match } = props;
 
   return (
     <div>
@@ -162,7 +163,7 @@ function Clients() {
               lineHeight: "26px"
             }}
           >
-            Bryce Tan
+            {decodeURI(match.params.id)}
           </Text>
         </Col>
         <Col span={3}>
@@ -248,8 +249,13 @@ function Clients() {
       <Row style={{marginBottom: "20px"}}/>
 
       <BCard title="Counseling Sessions">
-      <Table columns={columns} dataSource={data} />
+      <Table 
+        columns={columns} 
+        dataSource={data} 
+        pagination={false}
+      />
       </BCard>
+      
       </Layout.Content>
     </Layout>
     <NavBar/>
@@ -272,4 +278,4 @@ const styles = {
   }
 };
 
-export default Clients;
+export default ClientPage;

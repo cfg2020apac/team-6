@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
+import { useHistory, Link, BrowserRouter, Switch, Route } from "react-router-dom"; 
 
 import "../App.css";
 
+
 function NavBar() {
-    return (
+  const history = useHistory();
+  const uuid = 24;
+  
+  return (
       <div className="App">
           <div className="nav-bar">
               <Link className="nav-icon" to="/home">

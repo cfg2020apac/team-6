@@ -5,6 +5,7 @@ import { BCard } from "../Styled";
 import { FileTextOutlined, CheckSquareOutlined, UserAddOutlined } from '@ant-design/icons';
 import Avatar from 'antd/lib/avatar/avatar';
 import { requirePropFactory } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const { Panel } = Collapse;
 const Text = Typography.Text;
@@ -44,9 +45,13 @@ function HomeClientCard(props) {
             processStatus: props.operationsStatus
         }
     ]
+
+    const history = useHistory();
     
     return (
-        <div>
+        <div onClick={() => {
+            history.push(`/client/${URLify(props.clientName)}`);
+        }}>
             <BCard>
                 
                 <Row
@@ -94,5 +99,9 @@ function HomeClientCard(props) {
         </div>
     );
 }
+
+function URLify(string) {
+    return string.trim().replace(/\s/g, '%20');
+  }
 
 export default HomeClientCard;

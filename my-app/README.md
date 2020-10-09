@@ -1,4 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
+
+You will need python3, npm and yarn installed in your local. Then follow the below step:
+
+```
+cd api
+python3 -m venv venvc
+source venvc/bin/activate
+cd ..
+```
+
+Then
+```
+pip3 install -r requirements.txt
+```
+
+Startup the frontend and backend:
+```
+yarn start-api
+yarn start
+```
+
+<hr>
+
+**This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).**
 
 
 In the project directory, you can run:

@@ -34,8 +34,10 @@ class Client(db.Model):
     emergency_contact_name = db.Column(db.String(64), nullable=False)
     emergency_contact_number = db.Column(db.String(64), nullable=False)
     emergency_relation = db.Column(db.String(64), nullable=False)
+    gender = db.Column(db.String(64), nullable=False)
+    
 
-    def init(self, clientID, caseManagerID, name, contact_number, client_email, marital_status, employment_status, income, disability, race, religion, age, nationality, allergies, blood_type, birth_date, previous_conviction, emergency_contact_name, emergency_contact_number, emergency_relation):
+    def init(self, clientID, caseManagerID, name, contact_number, client_email, marital_status, employment_status, income, disability, race, religion, age, nationality, allergies, blood_type, birth_date, previous_conviction, emergency_contact_name, emergency_contact_number, emergency_relation, gender):
         self.clientID = clientID
         self.caseManagerID = caseManagerID
         self.name = name
@@ -56,9 +58,10 @@ class Client(db.Model):
         self.emergency_contact_name = emergency_contact_name
         self.emergency_contact_number = emergency_contact_number
         self.emergency_relation = emergency_relation
+        self.gender = gender
 
     def json(self):
-        return {"clientID": self.clientID, "caseManagerID" : self.caseManagerID, "name": self.name, "contact_number": self.contact_number, "client_email": self.client_email, "marital_status" : self.marital_status,"employment_status" : self.employment_status,"income" : self.income,"disability" : self.disability,"race" : self.race,"religion" : self.religion, "age" : self.age, "nationality" : self.nationality, "allergies" : self.allergies, "blood_type" : self.blood_type, "birth_date" : self.birth_date.strftime("%Y-%m-%d"), "previous_conviction" : self.previous_conviction, "emergency_contact_name" : self.emergency_contact_name, "emergency_contact_number" : self.emergency_contact_number, "emergency_relation" : self.emergency_relation}
+        return {"clientID": self.clientID, "caseManagerID" : self.caseManagerID, "name": self.name, "contact_number": self.contact_number, "client_email": self.client_email, "marital_status" : self.marital_status,"employment_status" : self.employment_status,"income" : self.income,"disability" : self.disability,"race" : self.race,"religion" : self.religion, "age" : self.age, "nationality" : self.nationality, "allergies" : self.allergies, "blood_type" : self.blood_type, "birth_date" : self.birth_date.strftime("%Y-%m-%d"), "previous_conviction" : self.previous_conviction, "emergency_contact_name" : self.emergency_contact_name, "emergency_contact_number" : self.emergency_contact_number, "emergency_relation" : self.emergency_relation, "gender": self.gender}
 
 @app.route("/get_all")
 def get_all():
@@ -80,7 +83,7 @@ def add_client():
     
     data = request.get_json()
     
-    client = Client(caseManagerID = data["caseManagerID"], name = data["name"], contact_number= data["contact_number"], client_email= data["client_email"], marital_status = data["marital_status"],employment_status = data["employment_status"],income = data["income"],disability = data["disability"],race = data["race"],religion = data["religion"], age = data["age"], nationality = data["nationality"], allergies = data["allergies"], blood_type = data["blood_type"], birth_date = data["birth_date"], previous_conviction = data["previous_conviction"], emergency_contact_name = data["emergency_contact_name"], emergency_contact_number = data["emergency_contact_number"], emergency_relation = data["emergency_relation"])
+    client = Client(caseManagerID = data["caseManagerID"], name = data["name"], contact_number= data["contact_number"], client_email= data["client_email"], marital_status = data["marital_status"],employment_status = data["employment_status"],income = data["income"],disability = data["disability"],race = data["race"],religion = data["religion"], age = data["age"], nationality = data["nationality"], allergies = data["allergies"], blood_type = data["blood_type"], birth_date = data["birth_date"], previous_conviction = data["previous_conviction"], emergency_contact_name = data["emergency_contact_name"], emergency_contact_number = data["emergency_contact_number"], emergency_relation = data["emergency_relation"], gender=data["gender"])
     try:
         db.session.add(client)
         db.session.commit()

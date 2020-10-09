@@ -29,6 +29,24 @@
   color: #61dafb;
 }
 
+.top-bar {
+  position: fixed;
+  top: 0;
+  height: 100px;
+  z-index: 5;
+  width: 100%;
+  padding: 3%;
+  background-color: white;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #C4C4C4;
+}
+
+.page-title {
+  color: #B1E07F;
+  font-size: 30px;
+}
+
 .nav-bar {
   width: 100%;
   position: fixed;

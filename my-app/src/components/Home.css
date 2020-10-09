@@ -1,9 +1,71 @@
+.home-bar-level1 {
+    padding-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-bar-level2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: -75px;
+}
+
+.my-clients-text {
+    color: #B1E07F;
+}
+
+.client-search-box {
+    width: 120px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #C4C4C4;
+    font-size: 10px;
+    padding: 1%;
+    margin-right: 6%;
+}
+
+.client-search-box img {
+    width: 10%;
+}
+
+.home-action-button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 5%;
+}
+
+.home-action-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.home-action-button img {
+    height: 20%;
+    display: block;
+}
+
+.home-action-button div {
+font-size: 10px;
+}
+
 .card-view {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: 60px;
+    padding-top: 128px;
+    padding-bottom: 58px;
     padding-left: 3%;
     padding-right: 3%;
     height: 100%;

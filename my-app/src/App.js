@@ -7,6 +7,7 @@ import Processes from './components/processes/Processes';
 import Settings from './components/settings/Settings';
 
 import './App.css';
+import "antd/dist/antd.css";
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);

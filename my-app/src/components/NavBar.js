@@ -4,7 +4,6 @@ import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
 import "../App.css";
 
 function NavBar() {
-
     return (
       <div className="App">
           <div className="nav-bar">

@@ -17,6 +17,27 @@ function App() {
       <header className="App-header">
         <p>The current time is (from flask): {currentTime}.</p>
       </header>
+      <div className="nav-bar">
+        <div className="nav-icon">
+          <img src={require("./img/home-icon.png")}/>
+          <span>Home</span> 
+        </div>
+
+        <div className="nav-icon">
+          <img src={require("./img/clients-icon.png")}/>
+          <span>Clients</span> 
+        </div>
+
+        <div className="nav-icon">
+          <img src={require("./img/processes-icon.png")}/>
+          <span>Processes</span> 
+        </div>
+
+        <div className="nav-icon">
+          <img src={require("./img/settings-icon.png")}/>
+          <span>Settings</span> 
+        </div>
+      </div>
     </div>
   );
 }

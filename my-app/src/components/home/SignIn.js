@@ -1,5 +1,7 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import { withRouter } from "react-router-dom";
+import withSizes from "react-sizes";
+
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -12,14 +14,21 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import logo from './img/nhcslogo.webp';
+import logo from '../img/nhcslogo.webp';
+
+
+import Header from "../header";
+
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width < 680
+});
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Goodie 6 Shoes
+        Goodie6Shoes
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -46,13 +55,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+function SignIn(props) {
   const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
+        <Header dark style={{ background: "transparent" }} />
         <img src={logo} width="45%"/>
         <Typography component="h1" variant="h5">
           Sign in
@@ -93,6 +103,15 @@ export default function SignIn() {
           >
             Sign In
           </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Jump to employment pages
+          </Button>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
@@ -113,3 +132,5 @@ export default function SignIn() {
     </Container>
   );
 }
+
+export default withRouter(withSizes(mapSizesToProps)(SignIn));

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import SignIn from './components/SignIn';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import SignIn from './components/home/SignIn';
 import './App.css';
 
 function App() {
@@ -14,12 +14,17 @@ function App() {
   }, []);
 
   return (
+    <BrowserRouter>
+        <Switch>
+          <Route component={SignIn} exact path="/" />
+        </Switch>
+    </BrowserRouter>
+
     // <div className="App">
     //   <header className="App-header">
     //     <p>The current time is (from flask): {currentTime}.</p>
     //   </header>
     // </div>
-    <SignIn/>
   );
 }
 

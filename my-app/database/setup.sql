@@ -20,7 +20,7 @@ CREATE TABLE client (
     clientID INT AUTO_INCREMENT,
     caseManagerID INT Not NULL,
     name VARCHAR(128) NOT NULL,
-    contact_number VARCHAR(8) NOT NULL,
+    contact_number VARCHAR(20) NOT NULL,
     client_email VARCHAR(128) NOT NULL,
     marital_status VARCHAR(128) NOT NULL,
     employment_status VARCHAR(128) NOT NULL,
@@ -28,12 +28,21 @@ CREATE TABLE client (
     disability VARCHAR(500) NOT NULL,
     race VARCHAR(128) NOT NULL,
     religion VARCHAR(128) NOT NULL,
+    age INT NOT NULL,
+    nationality VARCHAR(128) NOT NULL,
+    allergies VARCHAR(500) NOT NULL,
+    blood_type VARCHAR(500) NOT NULL,
+    birth_date DATE NOT NULL,
+    previous_conviction VARCHAR(500) NOT NULL,
+    emergency_contact_name VARCHAR(128) NOT NULL,
+    emergency_contact_number VARCHAR(20) NOT NULL,
+    emergency_relation VARCHAR(128) NOT NULL,
     PRIMARY KEY (clientID)
 );
 
-INSERT INTO `client` (`caseManagerID`, `name`, `contact_number`, `client_email`, `marital_status`,`employment_status`,`income`,`disability`,`race`,`religion`) 
+INSERT INTO `client` (`caseManagerID`, `name`, `contact_number`, `client_email`, `marital_status`,`employment_status`,`income`,`disability`,`race`,`religion`, `age`,`nationality`,`allergies`,`blood_type`,`birth_date`,`previous_conviction`,`emergency_contact_name`,`emergency_contact_number`,`emergency_relation`)
 VALUES 
-(1, 'clientA', '91234567', 'clientA@gmail.com', 'Married', 'Unemployed', 0, 'NIL', 'Chinese', 'Christian');
+(1, 'clientA', '91234567', 'clientA@gmail.com', 'Married', 'Unemployed', 0, 'NIL', 'Chinese', 'Christian','34','Singaporean','NA', 'A+', '1990-10-9', 'NA', 'Mary Tan', '90876543', 'Friend');
 
 
 CREATE TABLE entry (

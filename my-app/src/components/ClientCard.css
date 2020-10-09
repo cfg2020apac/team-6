@@ -1,0 +1,24 @@
+.main-card {
+    background-color: #B1E07F;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+.client-image-mask {
+    height: 20vw;
+    width: 20vw;
+    border-radius: 100%;
+    background-color: violet;
+    overflow: hidden;
+    margin: 3%;
+}
+
+.client-details {
+    margin: 3%;
+    
+}

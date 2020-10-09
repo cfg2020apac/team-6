@@ -11,12 +11,13 @@ CREATE TABLE account (
     name VARCHAR(128) NOT NULL,
     password VARCHAR(128) NOT NULL,
     email VARCHAR(128) NOT NULL UNIQUE,
+    role VARCHAR(128) NOT NULL,
     PRIMARY KEY (accountID)
 );
 
-INSERT INTO `account` (`username`, `name`, `password`, `email`) 
+INSERT INTO `account` (`username`, `name`, `password`, `email`, `role`) 
 VALUES 
-('jeremyong', 'Jeremy Ong', 'password', 'jeremy@gmail.com');
+('jeremyong', 'Jeremy Ong', 'password', 'jeremy@gmail.com', 'Case Manager');
 
 drop table if exists client;
 
@@ -41,12 +42,13 @@ CREATE TABLE client (
     emergency_contact_name VARCHAR(128) NOT NULL,
     emergency_contact_number VARCHAR(20) NOT NULL,
     emergency_relation VARCHAR(128) NOT NULL,
+    gender VARCHAR(128) NOT NULL,
     PRIMARY KEY (clientID)
 );
 
-INSERT INTO `client` (`caseManagerID`, `name`, `contact_number`, `client_email`, `marital_status`,`employment_status`,`income`,`disability`,`race`,`religion`, `age`,`nationality`,`allergies`,`blood_type`,`birth_date`,`previous_conviction`,`emergency_contact_name`,`emergency_contact_number`,`emergency_relation`)
+INSERT INTO `client` (`caseManagerID`, `name`, `contact_number`, `client_email`, `marital_status`,`employment_status`,`income`,`disability`,`race`,`religion`, `age`,`nationality`,`allergies`,`blood_type`,`birth_date`,`previous_conviction`,`emergency_contact_name`,`emergency_contact_number`,`emergency_relation`, `gender`)
 VALUES 
-(1, 'clientA', '91234567', 'clientA@gmail.com', 'Married', 'Unemployed', 0, 'NIL', 'Chinese', 'Christian','34','Singaporean','NA', 'A+', '1990-10-9', 'NA', 'Mary Tan', '90876543', 'Friend');
+(1, 'clientA', '91234567', 'clientA@gmail.com', 'Married', 'Unemployed', 0, 'NIL', 'Chinese', 'Christian','34','Singaporean','NA', 'A+', '1990-10-9', 'NA', 'Mary Tan', '90876543', 'Friend', 'Male');
 
 drop table if exists entry;
 

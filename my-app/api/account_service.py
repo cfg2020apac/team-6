@@ -18,16 +18,18 @@ class Account(db.Model):
     name = db.Column(db.String(64), nullable=False)
     password = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(64), nullable=False)
+    role = db.Column(db.String(64), nullable=False)
 
-    def init(self, accountID, username, name, password, email):
+    def init(self, accountID, username, name, password, email, role):
         self.accountID = accountID
         self.username = username
         self.name = name
         self.password = password
         self.email = email
+        self.role = role
 
     def json(self):
-        return {"accountID": self.accountID, "username": self.username, "name": self.name, "password": self.password, "email": self.email}
+        return {"accountID": self.accountID, "username": self.username, "name": self.name, "password": self.password, "email": self.email, "role":self.role}
 
 @app.route("/account")
 def get_all():
@@ -42,7 +44,7 @@ def get_client_name(customerID):
         name = account_row["name"]
 
     return jsonify({"name" : name})
-    
+
 @app.route("/login", methods=['POST'])
 def login():
     info = request.get_json()
@@ -60,7 +62,7 @@ def create_account():
     if (Account.query.filter_by(username=username).first()):
         return jsonify({"message": "An account with username '{}' already exists.".format(username)}), 400
  
-    data = Account(username=info["username"],name=info["name"],password=info["password"],customer_email=info["email"])
+    data = Account(username=info["username"],name=info["name"],password=info["password"], email=info["email"], role=info["role"])
 
     try:
         db.session.add(data)

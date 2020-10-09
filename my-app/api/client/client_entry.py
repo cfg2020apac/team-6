@@ -58,7 +58,7 @@ def get_client_entries(clientID):
 
         entry_json = entry.json()
         entry_json["client_name"] = clientName["name"]
-        entry_json["stakeholderName"] = stakeholderName["name"]
+        entry_json["coach_name"] = stakeholderName["name"]
 
         if category not in category_dict:
             category_dict[category] = [entry_json]

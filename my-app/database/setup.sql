@@ -11,12 +11,13 @@ CREATE TABLE account (
     name VARCHAR(128) NOT NULL,
     password VARCHAR(128) NOT NULL,
     email VARCHAR(128) NOT NULL UNIQUE,
+    role VARCHAR(128) NOT NULL,
     PRIMARY KEY (accountID)
 );
 
-INSERT INTO `account` (`username`, `name`, `password`, `email`) 
+INSERT INTO `account` (`username`, `name`, `password`, `email`, `role`) 
 VALUES 
-('jeremyong', 'Jeremy Ong', 'password', 'jeremy@gmail.com');
+('jeremyong', 'Jeremy Ong', 'password', 'jeremy@gmail.com', 'Case Manager');
 
 drop table if exists client;
 

@@ -21,11 +21,46 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  background-color: #FFFFFF;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.nav-bar {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #C4C4C4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2%;
+}
+
+.nav-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.nav-icon img {
+  height: 60%;
+  flex: 1;
+}
+
+.nav-icon span {
+  font-size: 12px;
+  flex: 1;
 }
 
 @keyframes App-logo-spin {

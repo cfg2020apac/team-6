@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignIn(props) {
+function SignUp(props) {
   const classes = useStyles();
 
   return (
@@ -134,4 +134,4 @@ function SignIn(props) {
   );
 }
 
-export default withRouter(withSizes(mapSizesToProps)(SignIn));
+export default withRouter(withSizes(mapSizesToProps)(SignUp));

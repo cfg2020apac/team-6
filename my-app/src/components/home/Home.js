@@ -6,8 +6,6 @@ import NavBar from "../NavBar";
 import { Layout, Col, Row, Typography, Collapse, Progress, Table, Tag, Space } from "antd";
 import { BCard } from "../Styled";
 import { FileTextOutlined, CheckSquareOutlined, UserAddOutlined } from '@ant-design/icons';
-import Avatar from 'antd/lib/avatar/avatar';
-import { requirePropFactory } from '@material-ui/core';
 import HomeClientCard from "./HomeClientCard";
 
 const { Panel } = Collapse;
@@ -30,7 +28,7 @@ function Home(props) {
                   <Text
                     style={{
                       color: "#FFF",
-                      fontSize: "24px",
+                      fontSize: "28px",
                       fontWeight: "300",
                       lineHeight: "26px"
                     }}
@@ -78,7 +76,7 @@ function Home(props) {
                   <Text
                     style={{
                       color: "#FFF",
-                      fontSize: "14px",
+                      fontSize: "16px",
                       fontWeight: "300",
                       lineHeight: "26px"
                     }}

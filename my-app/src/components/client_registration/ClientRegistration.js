@@ -31,7 +31,7 @@ function ClientRegistration(props) {
                     gutter={4}
                 >
                 
-                    <Col span={12}>
+                    <Col span={16}>
                     <Text
                         style={{
                         color: "#FFF",
@@ -44,7 +44,7 @@ function ClientRegistration(props) {
                     </Text>
                     </Col>
 
-                    <Col span={6} to="/client-registration">
+                    <Col span={4} to="/client-registration">
                         <Button 
                             type="danger"
                             style={{
@@ -54,7 +54,7 @@ function ClientRegistration(props) {
                         </Button>
                     </Col>
 
-                    <Col span={6}>
+                    <Col span={4}>
                         <Button 
                             style={{
                                 fontSize: "11px"

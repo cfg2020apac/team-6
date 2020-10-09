@@ -41,28 +41,28 @@ function Home(props) {
 
                 <Link span={5} to="/client-registration">
                   <div style={{
-                    "display": "flex",
-                    "flex-direction": "column"
+                    display: "flex",
+                    flexDirection: "column"
                   }}>
                     <UserAddOutlined style={{color: "#FFF", fontSize: "24px"}}/>
                     <span style={{
-                      "color": "white",
-                      "text-align": "center",
-                      "font-size": "11px"
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: "11px"
                     }}>Add Client</span>
                   </div>
                 </Link>
 
                 <Col span={5}>
                   <div style={{
-                      "display": "flex",
-                      "flex-direction": "column"
+                      display: "flex",
+                      flexDirection: "column"
                     }}>
                     <CheckSquareOutlined style={{color: "#FFF", fontSize: "24px"}}/>
                     <span style={{
-                      "color": "white",
-                      "text-align": "center",
-                      "font-size": "11px"
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: "11px"
                     }}>To-do</span>
                   </div>
                 </Col>
@@ -91,8 +91,8 @@ function Home(props) {
                   <input 
                     placeholder={"Search for clients..."}
                     style={{
-                      "width": "100%",
-                      "font-size": "11px"
+                      width: "100%",
+                      fontSize: "11px"
                   }}>
                   </input>
                 </Col>

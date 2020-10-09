@@ -86,7 +86,7 @@ function HomeClientCard(props) {
 
                 <Table 
                     style={{
-                        "font-size": "10px"
+                        fontSize: "10px"
                     }}
                     columns={columns}
                     dataSource={data}

@@ -13,7 +13,20 @@ const Text = Typography.Text;
 
 
 function Home(props) {
-    return (
+  const [clientData, setCurrentData] = useState(0);
+  
+  useEffect(() => {
+    fetch("http://127.0.0.1:4000/get_all").then(res => res.json()).then(clientData => {
+      setCurrentData(clientData);
+      console.log(clientData);
+    });
+  }, []);
+  
+  if (!clientData) {
+    return null;
+  }
+
+  return (
         <div>
           <Layout style={styles.layout}>
             <Layout.Content style={styles.content}>
@@ -96,33 +109,16 @@ function Home(props) {
                 </Col>
               </Row>
                 
-              
-              <HomeClientCard
-                clientName={"Bryce Tan"}
-                clientImage={require("../img/bryce1.png")}
-                employmentStatus={"Initial Engagement"}
-                housingStatus={"Client Eligible"}
-                counsellingStatus={"Completed 1st"}
-                operationsStatus={"Bed Assigned"}
-              />
-
-              <HomeClientCard
-                clientName={"Raghav Bhardwaj"}
-                clientImage={require("../img/raghav1.png")}
-                employmentStatus={"Interview in Process"}
-                housingStatus={"Client Eligible"}
-                counsellingStatus={"Completed 1st"}
-                operationsStatus={"Bed Assigned"}
-              />
-
-              <HomeClientCard
-                clientName={"Tan Jia Min"}
-                clientImage={require("../img/jia_min1.png")}
-                employmentStatus={"Interview in Process"}
-                housingStatus={"Client Eligible"}
-                counsellingStatus={"Completed 1st"}
-                operationsStatus={"Bed Assigned"}
-              />
+              {
+                clientData.Clients.map((clientDetails) => (
+                  <HomeClientCard
+                    key={clientDetails.clientID}
+                    clientName={clientDetails.name}
+                    clientImage={require("../img/bryce1.png")}
+                    employmentStatus={clientDetails.employment_status}
+                  />
+                ))
+              }
 
             </Layout.Content>
           </Layout>

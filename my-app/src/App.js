@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignIn from './components/mainpage/SignIn';
-import SignUp from './components/mainpage/SignUp';
+//import SignUp from './components/mainpage/SignUp';
 import Home from './components/home/Home';
 import ClientPage from './components/clients/ClientPage';
 import ClientRegistration from './components/client_registration/ClientRegistration';
@@ -30,7 +30,7 @@ function App() {
     <BrowserRouter>
         <Switch>
           <Route component={SignIn} exact path="/"/>
-          <Route path="/signup" exact component={SignUp}/>
+          {/*<Route path="/signup" exact component={SignUp}/>*/}
           <Route path="/home" exact component={Home}/>
           <Route path="/client/:id" render={(props) => {
             return (<ClientPage {...props}/>)

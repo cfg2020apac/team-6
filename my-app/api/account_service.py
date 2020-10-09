@@ -33,6 +33,16 @@ class Account(db.Model):
 def get_all():
   return jsonify({"Accounts": [account.json() for account in Account.query.all()]})
 
+@app.route("/login", methods=['POST'])
+def login():
+    info = request.get_json()
+    username = info["username"]
+    password = info["password"]
+    if not (Account.query.filter_by(username=username,password=password).first()):
+        return jsonify({"message": "Incorrect credentials"}), 400
+        
+    return jsonify({"message": "Login successful"})
+
 @app.route("/account", methods=['POST'])
 def create_account():
     info = request.get_json()

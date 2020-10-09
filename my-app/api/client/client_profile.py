@@ -35,11 +35,23 @@ def get_all():
 
 @app.route("/get_assigned_client/<int:customerID>")
 def get_assigned_account(customerID):
-       
-    # clients = Client.query.filter_by(customerID = customerID)
-    # print (clients)
 
     return jsonify({"clients": [client.json() for client in Client.query.filter_by(customerID = customerID)]})
+
+@app.route("/add_client", methods=["POST"])
+def add_client():
+    
+    data = request.get_json()
+    
+    client = Client(customerID = data["customerID"], name = data["name"], contact_number= data["contact_number"], client_email= data["client_email"])
+
+    try:
+        db.session.add(client)
+        db.session.commit()
+    except:
+        return jsonify({"message": "An error occurred creating client."}), 500
+
+    return jsonify(client.json()), 201
 
 
 if __name__ == '__main__':

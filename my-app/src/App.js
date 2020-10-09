@@ -1,40 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import SignIn from './components/mainpage/SignIn';
+import SignUp from './components/mainpage/SignUp';
+import Home from './components/home/Home';
+import ClientPage from './components/clients/ClientPage';
+import ClientRegistration from './components/client_registration/ClientRegistration';
+import Processes from './components/processes/Processes';
+import Settings from './components/settings/Settings';
 
-import { withRouter } from "react-router-dom";
-
-import logo from './logo.svg';
-import SignIn from './components/SignIn';
-import NavBar from './components/NavBar';
-import Home from "./components/Home.js";
-import Clients from "./components/Clients.js";
-import Processes from "./components/Processes.js";
-import Settings from "./components/Settings.js";
+import CounsellingProcess from './components/processes/CounsellingProcess';
+import EmploymentProcess from './components/processes/EmploymentProcess';
+import HousingProcess from './components/processes/HousingProcess';
+import OperationProcess from './components/processes/OperationProcess';
 
 import './App.css';
+import "antd/dist/antd.css";
 
-class App extends React.Component {
+function App() {
+  const [currentTime, setCurrentTime] = useState(0);
 
-  render() {
-    return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <p>The current time is (from flask): {currentTime}.</p>
-    //   </header>
-    // </div>
+  // calling from frontend to backend
+  useEffect(() => {
+    fetch('/time').then(res => res.json()).then(data => {
+      setCurrentTime(data.time);
+    });
+  }, []);
+
+  return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={() => (<SignIn/>)}/>
-        <Route path="/home" exact component={() => (<Home/>)}/>
-        <Route path="/clients" exact component={() => (<Clients/>)}/>
-        <Route path="/processes" exact component={() => (<Processes/>)}/>
-        <Route path="/settings" exact component={() => (<Settings/>)}/>
-      </Switch>
+        <Switch>
+          <Route component={SignIn} exact path="/"/>
+          <Route path="/signup" exact component={SignUp}/>
+          <Route path="/home" exact component={Home}/>
+          <Route path="/client/:id" render={(props) => {
+            return (<ClientPage {...props}/>)
+          }} />
+          <Route path="/client-registration" exact component={ClientRegistration}/>
+          <Route path="/processes" exact component={Processes}/>
+          <Route path="/counselling" exact component={CounsellingProcess}/>
+          <Route path="/employment" exact component={EmploymentProcess}/>
+          <Route path="/housing" exact component={HousingProcess}/>
+          <Route path="/operation" exact component={OperationProcess}/>
+          <Route path="/settings" exact component={Settings}/>
+        </Switch>
     </BrowserRouter>
   );
-  }
-
-  
 }
 
 export default App;

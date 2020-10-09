@@ -13,21 +13,21 @@ CORS(app)
 class Account(db.Model):
     tablename = 'account'
 
-    customerID = db.Column(db.Integer, primary_key=True)
+    accountID = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), nullable=False)
     name = db.Column(db.String(64), nullable=False)
     password = db.Column(db.String(64), nullable=False)
-    customer_email = db.Column(db.String(64), nullable=False)
+    email = db.Column(db.String(64), nullable=False)
 
-    def init(self, customerID, username, name, password, customer_email):
-        self.customerID = customerID
+    def init(self, accountID, username, name, password, email):
+        self.accountID = accountID
         self.username = username
         self.name = name
         self.password = password
-        self.customer_email = customer_email
+        self.email = email
 
     def json(self):
-        return {"customerID": self.customerID, "username": self.username, "name": self.name, "password": self.password, "customer_email": self.customer_email}
+        return {"accountID": self.accountID, "username": self.username, "name": self.name, "password": self.password, "email": self.email}
 
 @app.route("/account")
 def get_all():
@@ -42,6 +42,16 @@ def get_client_name(customerID):
         name = account_row["name"]
 
     return jsonify({"name" : name})
+    
+@app.route("/login", methods=['POST'])
+def login():
+    info = request.get_json()
+    username = info["username"]
+    password = info["password"]
+    if not (Account.query.filter_by(username=username,password=password).first()):
+        return jsonify({"message": "Incorrect credentials"}), 400
+        
+    return jsonify({"message": "Login successful"})
 
 @app.route("/account", methods=['POST'])
 def create_account():
@@ -50,7 +60,7 @@ def create_account():
     if (Account.query.filter_by(username=username).first()):
         return jsonify({"message": "An account with username '{}' already exists.".format(username)}), 400
  
-    data = Account(username=info["username"],name=info["name"],password=info["password"],customer_email=info["customer_email"])
+    data = Account(username=info["username"],name=info["name"],password=info["password"],customer_email=info["email"])
 
     try:
         db.session.add(data)

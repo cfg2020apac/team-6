@@ -38,11 +38,6 @@ function HomeClientCard(props) {
             key: "3",
             processType: "Counselling",
             processStatus: props.counsellingStatus
-        },
-        {
-            key: "4",
-            processType: "Operations",
-            processStatus: props.operationsStatus
         }
     ]
 
@@ -86,7 +81,7 @@ function HomeClientCard(props) {
 
                 <Table 
                     style={{
-                        fontSize: "10px"
+                        fontSize: "10px",
                     }}
                     columns={columns}
                     dataSource={data}

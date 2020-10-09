@@ -13,16 +13,26 @@ const Text = Typography.Text;
 
 
 function Home(props) {
-  const [clientData, setCurrentData] = useState(0);
+  
+  const [clientFullData, setFullData] = useState([]);
   
   useEffect(() => {
-    fetch("http://127.0.0.1:4000/get_all").then(res => res.json()).then(clientData => {
-      setCurrentData(clientData);
-      console.log(clientData);
+    fetch("http://127.0.0.1:5002/get_all").then(res => res.json()).then(clientData => {
+      for (var clientDetail of clientData.Clients) {
+        fetch("http://127.0.0.1:5003/get_status/"+clientDetail.clientID).then(res => res.json()).then(clientStatusData => {
+          var clientFinalDetails = {};
+          clientFinalDetails.clientID = clientDetail.clientID;
+          clientFinalDetails.clientName = clientDetail.name;
+          clientFinalDetails.employmentStatus = clientStatusData.entries.Employment[1];
+          clientFinalDetails.counsellingStatus = clientStatusData.entries.Counselling[1];
+          clientFinalDetails.housingStatus = clientStatusData.entries.Housing[1];
+          setFullData(clientFullData => [...clientFullData, clientFinalDetails]);
+        });
+      }
     });
   }, []);
   
-  if (!clientData) {
+  if (!clientFullData) {
     return null;
   }
 
@@ -110,12 +120,13 @@ function Home(props) {
               </Row>
                 
               {
-                clientData.Clients.map((clientDetails) => (
+                clientFullData.map((renderData) => (
                   <HomeClientCard
-                    key={clientDetails.clientID}
-                    clientName={clientDetails.name}
-                    clientImage={require("../img/bryce1.png")}
-                    employmentStatus={clientDetails.employment_status}
+                    key={renderData.clientId}
+                    clientName={renderData.clientName}
+                    employmentStatus={renderData.employmentStatus}
+                    counsellingStatus={renderData.counsellingStatus}
+                    housingStatus={renderData.housingStatus}
                   />
                 ))
               }

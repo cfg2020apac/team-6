@@ -17,7 +17,13 @@ function ClientRegistration(props) {
     const [form] = Form.useForm();
     
     const submitForm = (values) => {
+        delete values.gender;
+        values.caseManagerID = 1;
         console.log(values);
+        fetch("http://127.0.0.1:5002/add_client", {
+            method: "POST",
+            body: JSON.stringify(values)
+        })
     }
 
     return (
@@ -102,7 +108,7 @@ function ClientRegistration(props) {
                         ></Row>
 
                         <Form.Item
-                            name="fullName"
+                            name="name"
                             label="Full Name"
                             rules={[
                                 {
@@ -114,7 +120,7 @@ function ClientRegistration(props) {
                         </Form.Item>
 
                         <Form.Item
-                            name="emailAddress"
+                            name="client_email"
                             label="Email Address"
                             rules={[
                                 {
@@ -126,7 +132,7 @@ function ClientRegistration(props) {
                         </Form.Item>
                         
                         <Form.Item
-                            name="phoneNumber"
+                            name="contact_number"
                             label="Phone Number"
                             rules={[
                                 {
@@ -174,7 +180,7 @@ function ClientRegistration(props) {
                         </Form.Item>
 
                         <Form.Item
-                            name="birthday"
+                            name="birth_date"
                             label="Birthday"
                             rules={[
                                 {
@@ -188,7 +194,7 @@ function ClientRegistration(props) {
                         <Divider></Divider>
 
                         <Form.Item
-                            name="maritalStatus"
+                            name="marital_status"
                             label="Marital Status"
                             rules={[
                                 {
@@ -205,7 +211,7 @@ function ClientRegistration(props) {
                         </Form.Item>
 
                         <Form.Item
-                            name="employmentStatus"
+                            name="employment_status"
                             label="Employment Status"
                             rules={[
                                 {
@@ -296,7 +302,7 @@ function ClientRegistration(props) {
                         </Form.Item>
 
                         <Form.Item
-                            name="bloodType"
+                            name="blood_type"
                             label="Blood Type"
                             rules={[
                                 {
@@ -321,7 +327,7 @@ function ClientRegistration(props) {
                         </Form.Item>
 
                         <Form.Item
-                            name="previousConvictions"
+                            name="previous_conviction"
                             label="Previous Convictions"
                             rules={[
                                 {
@@ -346,7 +352,7 @@ function ClientRegistration(props) {
                         ></Row>
 
                         <Form.Item
-                            name="emergencyContactFullName"
+                            name="emergency_contact_name"
                             label="Full Name"
                             rules={[
                                 {
@@ -358,7 +364,7 @@ function ClientRegistration(props) {
                         </Form.Item>
 
                         <Form.Item
-                            name="emergencyContactPhoneNumber"
+                            name="emergency_contact_number"
                             label="Phone Number"
                             rules={[
                                 {
@@ -370,7 +376,7 @@ function ClientRegistration(props) {
                         </Form.Item>
 
                         <Form.Item
-                            name="emergencyContactRelation"
+                            name="emergency_contact_relation"
                             label="Relation"
                             rules={[
                                 {

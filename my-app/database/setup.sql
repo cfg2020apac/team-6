@@ -64,10 +64,10 @@ CREATE TABLE entry (
 
 INSERT INTO `entry` (`clientID`, `stakeholderID`, `category`, `status`, `description`, `date`) 
 VALUES 
-(1, 2, 'Employment', 'Initial engagement with client completed', 'The client is keen in the F&B industry.', '2020-9-1 18:00'),
-(1, 2, 'Housing', 'Client Eligible', 'The client is keen in staying in Chua Chu Kang area', '2020-9-2 18:00'),
-(1, 2, 'Housing', 'Client approval pending supporting docs', 'Waiting for income statement', '2020-10-5 18:00'),
-(1, 2, 'Counselling', 'Completed first session with notes emailed to Case Mgr', 'The client has a positive attitude', '2020-9-28 16:00'),
-(1, 2, 'Counselling', '2nd Session Completed', 'The client is eager in improving', '2020-10-1 10:00')
+(1, 1, 'Employment', 'Initial engagement with client completed', 'The client is keen in the F&B industry.', '2020-9-1 18:00'),
+(1, 1, 'Housing', 'Client Eligible', 'The client is keen in staying in Chua Chu Kang area', '2020-9-2 18:00'),
+(1, 1, 'Housing', 'Client approval pending supporting docs', 'Waiting for income statement', '2020-10-5 18:00'),
+(1, 1, 'Counselling', 'Completed first session with notes emailed to Case Mgr', 'The client has a positive attitude', '2020-9-28 16:00'),
+(1, 1, 'Counselling', '2nd Session Completed', 'The client is eager in improving', '2020-10-1 10:00')
 ;
 

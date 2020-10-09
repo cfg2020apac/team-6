@@ -4,6 +4,7 @@ from flask_cors import CORS
 from os import environ
 from datetime import datetime
 import sys
+import requests
  
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/codeforgood'
@@ -45,13 +46,25 @@ def get_client_entries(clientID):
 
     category_dict = {}
 
+    nameURL = "http://localhost:4000/get_client_name/" + str(clientID)
+    clientName = requests.get(nameURL, timeout=1).json()
+
     for entry in entries:
         category = entry.category
+        stakeholderID = entry.stakeholderID
+        
+        stakeholderURL = "http://localhost:5000/get_account_name/" + str(stakeholderID)
+        stakeholderName = requests.get(stakeholderURL).json()
+
+        entry_json = entry.json()
+        entry_json["client_name"] = clientName["name"]
+        entry_json["coach_name"] = stakeholderName["name"]
+
         if category not in category_dict:
-            category_dict[category] = [entry.json()]
+            category_dict[category] = [entry_json]
 
         else:
-            category_dict[category].append(entry.json())
+            category_dict[category].append(entry_json)
 
     return jsonify({"entries": category_dict})
 
@@ -96,4 +109,4 @@ def get_status(clientID):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0' , port=3000, debug=True)
+    app.run(host='0.0.0.0' , port=5003, debug=True)

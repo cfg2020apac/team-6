@@ -14,6 +14,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import logo from './img/nhcslogo.webp';
 
+import { Link as RouterLink, withRouter } from "react-router-dom";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -84,6 +86,8 @@ export default function SignIn() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+
+          <RouterLink to="/home">
           <Button
             type="submit"
             fullWidth
@@ -93,6 +97,8 @@ export default function SignIn() {
           >
             Sign In
           </Button>
+          </RouterLink>
+
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">

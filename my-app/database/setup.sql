@@ -1,4 +1,6 @@
-create database if not exists codeforgood;
+drop database if exists codeforgood;
+
+create database codeforgood;
 use codeforgood;
 
 drop table if exists account;
@@ -11,10 +13,12 @@ CREATE TABLE account (
     customer_email VARCHAR(128) NOT NULL UNIQUE,
     PRIMARY KEY (customerID)
 );
+
 INSERT INTO `account` (`username`, `name`, `password`, `customer_email`) 
 VALUES 
 ('jeremyong', 'Jeremy Ong', 'password', 'jeremy@gmail.com');
 
+drop table if exists client;
 
 CREATE TABLE client (
     clientID INT AUTO_INCREMENT,
@@ -44,10 +48,11 @@ INSERT INTO `client` (`caseManagerID`, `name`, `contact_number`, `client_email`,
 VALUES 
 (1, 'clientA', '91234567', 'clientA@gmail.com', 'Married', 'Unemployed', 0, 'NIL', 'Chinese', 'Christian','34','Singaporean','NA', 'A+', '1990-10-9', 'NA', 'Mary Tan', '90876543', 'Friend');
 
+drop table if exists entry;
 
 CREATE TABLE entry (
     entryID INT AUTO_INCREMENT,
-    clientID INT Not NULL,
+    clientID INT NOT NULL,
     stakeholderID INT NOT NULL,
     category VARCHAR(128) NOT NULL,
     status VARCHAR(128) NOT NULL,

@@ -6,6 +6,11 @@ import Clients from './components/clients/Clients';
 import Processes from './components/processes/Processes';
 import Settings from './components/settings/Settings';
 
+import CounsellingProcess from './components/processes/CounsellingProcess';
+import EmploymentProcess from './components/processes/EmploymentProcess';
+import HousingProcess from './components/processes/HousingProcess';
+import OperationProcess from './components/processes/OperationProcess';
+
 import './App.css';
 import "antd/dist/antd.css";
 
@@ -26,6 +31,10 @@ function App() {
           <Route path="/home" exact component={Home}/>
           <Route path="/clients" exact component={Clients}/>
           <Route path="/processes" exact component={Processes}/>
+          <Route path="/counselling" exact component={CounsellingProcess}/>
+          <Route path="/employment" exact component={EmploymentProcess}/>
+          <Route path="/housing" exact component={HousingProcess}/>
+          <Route path="/operation" exact component={OperationProcess}/>
           <Route path="/settings" exact component={Settings}/>
         </Switch>
     </BrowserRouter>

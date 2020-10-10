@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import NavBar from "../NavBar";
 import { Layout, Col, Row, Typography, Collapse, Divider, Progress, Table, Tag, Comment, Form, Button, List, Input } from "antd";
@@ -143,6 +143,11 @@ function ClientPage(props) {
   ];
 
   const { match } = props;
+  const [clientData, setClientData] = useState({});
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <div>
@@ -174,6 +179,11 @@ function ClientPage(props) {
           <CalendarOutlined style={{color: "#FFF", fontSize: "24px"}}/>
         </Col>
       </Row>
+
+      <BCard title="Client Details">
+
+      </BCard>
+      <Row style={{marginBottom: "20px"}}/>
 
       <BCard title="Employment">
         <Row style={{fontSize: "14px", fontWeight: "800", marginBottom: "10px"}}>Career Coach: Raghav</Row>

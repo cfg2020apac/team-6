@@ -13,17 +13,52 @@ const Text = Typography.Text;
 const { Option } = Select;
 const { TextArea } = Input;
 
+function testButton() {
+    console.log('hhaa');
+    var values = `{
+        age: 56,
+        allergies: "NA",
+        birth_date: "1950-4-12",
+        blood_type: "O+",
+        clientID: 1,
+        caseManagerID: 1,
+        client_email: "clientB@gmail.com",
+        contact_number: "98765432",
+        disability: "NIL",
+        emergency_contact_name: "Tom",
+        emergency_contact_number: "99230234",
+        emergency_relation: "Brother",
+        employment_status: "Part-Time",
+        income: 500,
+        marital_status: "Divorced",
+        name: "clientB",
+        nationality: "Singaporean",
+        previous_conviction: "NA",
+        race: "Chinese",
+        religion: "Christian",
+        gender "Male"
+    }`
+    fetch("http://127.0.0.1:5002/add_client", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: values
+    })
+}
+
+
 function ClientRegistration(props) {
     const [form] = Form.useForm();
     
+    const axios = require('axios');
+
     const submitForm = (values) => {
-        delete values.gender;
         values.caseManagerID = 1;
+        values.birth_date = "2010-02-02";
         console.log(values);
-        fetch("http://127.0.0.1:5002/add_client", {
-            method: "POST",
-            body: JSON.stringify(values)
-        })
+        axios.post("http://127.0.0.1:5002/add_client", values);
     }
 
     return (
@@ -62,6 +97,7 @@ function ClientRegistration(props) {
 
                     <Col span={4}>
                         <Button 
+                            onClick={testButton}
                             style={{
                                 fontSize: "11px"
                             }}
@@ -376,7 +412,7 @@ function ClientRegistration(props) {
                         </Form.Item>
 
                         <Form.Item
-                            name="emergency_contact_relation"
+                            name="emergency_relation"
                             label="Relation"
                             rules={[
                                 {

@@ -3,7 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from os import environ
 from datetime import datetime
- 
+import sys
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/codeforgood'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -81,8 +82,8 @@ def get_assigned_account(caseManagerID):
 @app.route("/add_client", methods=["POST"])
 def add_client():
     
-    data = request.get_json()
-    
+    data = request.get_json(force=True)
+    print(data, file=sys.stderr)
     client = Client(caseManagerID = data["caseManagerID"], name = data["name"], contact_number= data["contact_number"], client_email= data["client_email"], marital_status = data["marital_status"],employment_status = data["employment_status"],income = data["income"],disability = data["disability"],race = data["race"],religion = data["religion"], age = data["age"], nationality = data["nationality"], allergies = data["allergies"], blood_type = data["blood_type"], birth_date = data["birth_date"], previous_conviction = data["previous_conviction"], emergency_contact_name = data["emergency_contact_name"], emergency_contact_number = data["emergency_contact_number"], emergency_relation = data["emergency_relation"], gender=data["gender"])
     try:
         db.session.add(client)

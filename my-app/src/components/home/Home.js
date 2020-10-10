@@ -8,27 +8,46 @@ import { BCard } from "../Styled";
 import { FileTextOutlined, CheckSquareOutlined, UserAddOutlined } from '@ant-design/icons';
 import HomeClientCard from "./HomeClientCard";
 
+import Bryce1Img from "../img/bryce1.png";
+import Gwyneth1Img from "../img/gwyneth1.png";
+import Raghav1Img from "../img/raghav1.png";
+import Raghav2Img from "../img/raghav2.png";
+import JiaMin1Img from "../img/jia_min1.png";
+
 const { Panel } = Collapse;
 const Text = Typography.Text;
 
 
 function Home(props) {
   
-  const [clientFullData, setFullData] = useState([]);
-  
+  const [clientFullData, setFullData] = useState({});
+  const img_vars = [null, Bryce1Img, Raghav2Img, Gwyneth1Img, Raghav1Img, JiaMin1Img];
+
   useEffect(() => {
     fetch("http://127.0.0.1:5002/get_all").then(res => res.json()).then(clientData => {
-      for (var clientDetail of clientData.Clients) {
-        fetch("http://127.0.0.1:5003/get_status/"+clientDetail.clientID).then(res => res.json()).then(clientStatusData => {
-          var clientFinalDetails = {};
-          clientFinalDetails.clientID = clientDetail.clientID;
-          clientFinalDetails.clientName = clientDetail.name;
-          clientFinalDetails.employmentStatus = clientStatusData.entries.Employment[1];
-          clientFinalDetails.counsellingStatus = clientStatusData.entries.Counselling[1];
-          clientFinalDetails.housingStatus = clientStatusData.entries.Housing[1];
-          setFullData(clientFullData => [...clientFullData, clientFinalDetails]);
+    
+      var clientIdObject = {}
+      for (var singleClientData of clientData.Clients) {
+        clientIdObject[singleClientData.clientID] = {};
+        clientIdObject[singleClientData.clientID].clientID = singleClientData.clientID;
+        clientIdObject[singleClientData.clientID].name = singleClientData.name;
+        clientIdObject[singleClientData.clientID].email = singleClientData.client_email;
+        clientIdObject[singleClientData.clientID].image = img_vars[singleClientData.clientID];
+      }
+      
+      for (const key in clientIdObject) {
+        fetch("http://127.0.0.1:5003/get_status/" + key).then(res => res.json()).then(clientStatusData => {
+          if (Object.keys(clientStatusData.entries).length != 0) {
+            console.log(clientStatusData);
+            clientIdObject[key].employmentStatus = clientStatusData.entries.Employment[1];
+            clientIdObject[key].housingStatus = clientStatusData.entries.Housing[1];
+            clientIdObject[key].counsellingStatus = clientStatusData.entries.Counselling[1];
+          }
+          setFullData(clientIdObject);
         });
       }
+
+      console.log(clientIdObject);
     });
   }, []);
   
@@ -120,13 +139,15 @@ function Home(props) {
               </Row>
                 
               {
-                clientFullData.map((renderData) => (
+                Object.keys(clientFullData).map((renderData) => (
                   <HomeClientCard
-                    key={renderData.clientId}
-                    clientName={renderData.clientName}
-                    employmentStatus={renderData.employmentStatus}
-                    counsellingStatus={renderData.counsellingStatus}
-                    housingStatus={renderData.housingStatus}
+                    key={clientFullData[renderData].clientID}
+                    clientID={clientFullData[renderData].clientID}
+                    clientImage={clientFullData[renderData].image}
+                    clientName={clientFullData[renderData].name}
+                    employmentStatus={clientFullData[renderData].employmentStatus}
+                    counsellingStatus={clientFullData[renderData].counsellingStatus}
+                    housingStatus={clientFullData[renderData].housingStatus}
                   />
                 ))
               }

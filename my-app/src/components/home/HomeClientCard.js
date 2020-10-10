@@ -45,7 +45,7 @@ function HomeClientCard(props) {
     
     return (
         <div onClick={() => {
-            history.push(`/client/${props.clientID}`);
+            history.push(`/client/${URLify(props.clientName)}`);
         }}>
             <BCard>
                 

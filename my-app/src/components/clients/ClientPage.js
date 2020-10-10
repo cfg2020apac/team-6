@@ -86,12 +86,6 @@ function ClientPage(props) {
 
   const columns = [
     {
-      title: 'No',
-      dataIndex: 'key',
-      key: 'key',
-      render: text => <a>{text}</a>,
-    },
-    {
       title: 'Client name',
       dataIndex: 'client_name',
       key: 'client_name',
@@ -143,11 +137,6 @@ function ClientPage(props) {
   ];
 
   const { match } = props;
-  const [clientData, setClientData] = useState({});
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <div>
@@ -179,11 +168,6 @@ function ClientPage(props) {
           <CalendarOutlined style={{color: "#FFF", fontSize: "24px"}}/>
         </Col>
       </Row>
-
-      <BCard title="Client Details">
-
-      </BCard>
-      <Row style={{marginBottom: "20px"}}/>
 
       <BCard title="Employment">
         <Row style={{fontSize: "14px", fontWeight: "800", marginBottom: "10px"}}>Career Coach: Raghav</Row>

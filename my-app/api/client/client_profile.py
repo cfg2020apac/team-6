@@ -73,6 +73,12 @@ def get_client_name(clientID):
     client_row = Client.query.filter_by(clientID = clientID).first().json()
     return jsonify({"name" : client_row["name"]})
 
+@app.route("/get_client_details/<string:clientID>")
+def get_client_details(clientID):
+    clientID = int(clientID)
+    client_row = Client.query.filter_by(clientID = clientID).first().json()
+    return jsonify({"client_details" : client_row})
+
 @app.route("/get_assigned_client/<int:caseManagerID>")
 def get_assigned_account(caseManagerID):
 
